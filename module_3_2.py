@@ -10,6 +10,7 @@ def send_email(message, recipient, *, sender='university.help@gmail.com'):
                 flag = True
     if flag is False:
         print(f'Невозможно отправить письмо с адреса {sender} на адрес {recipient}')
+        return
     flag = False
     if dog in sender:
         for i in ends:
