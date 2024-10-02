@@ -22,17 +22,20 @@ class Shop:
         self.__file_name = 'products.txt'
 
     def get_products(self) -> str:
-        get_products = open(self.__file_name).read()
-        return get_products
+        get_products = open(self.__file_name)
+        read_get_products = get_products.read()
+        get_products.close()
+        return read_get_products
 
     def add(self, *products: Product) -> None:
         list_products = [*products]
+        write_product = open(self.__file_name, 'a')
         for i in list_products:
-            write_product = open(self.__file_name, 'a')
             if i.name not in self.get_products():
                 write_product.write(f'{i.name}, {i.weight}, {i.category} \n')
             else:
                 print(f'Продукт {i} уже есть в магазине ')
+        write_product.close()
 
 
 s1 = Shop()
