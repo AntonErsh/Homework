@@ -29,16 +29,29 @@
 # selection_sort(nums)
 # print(nums)
 
-class Example:
-    def __new__(cls, *args, **kwargs):
-        print(args)
-        print(kwargs)
-        return object.__new__(cls)
 
-    def __init__(self, first, second, third):
-        print(first)
-        print(second)
-        print(third)
+import tkinter
+import os
+from tkinter import filedialog
 
 
-ex = Example('data', second=25, third=3.14)
+def file_select():
+    filename = filedialog.askopenfilename(initialdir='D:/', title='Выберите файл ',
+                                          filetypes=(('Текстовый файл', '.txt'),
+                                                     ('Все файлы', '*'), ('Музон ебать', '.mp3')))
+    text['text'] = text['text'] + '' + filename
+    os.startfile(filename)
+
+
+window = tkinter.Tk()
+window.title('Проводник')
+window.geometry('500x200')
+window.configure(bg='silver')
+window.resizable(False, False)
+text = tkinter.Label(window, text='Файл: ', height=5, width=72, background='light grey')
+text.grid(column=1, row=1)
+button_select = tkinter.Button(window, width=15, height=3,
+                               text='Выбрать файл ', background='grey', activebackground='dark grey',
+                               command=file_select)
+button_select.grid(column=1, row=3, pady=10)
+window.mainloop()

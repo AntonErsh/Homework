@@ -22,7 +22,7 @@ class WordsFinder:
         for key, value in self.get_all_words().items():
             count = 1
             for i in value:
-                if word == i:
+                if word.lower() == i.lower():
                     dict_result.update({key: count})
                     break
                 count += 1
@@ -33,7 +33,7 @@ class WordsFinder:
         for key, value in self.get_all_words().items():
             count = 0
             for i in value:
-                if word == i:
+                if word.lower() == i.lower():
                     count += 1
             dict_result.update({key: count})
         return dict_result
