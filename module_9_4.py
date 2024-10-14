@@ -1,12 +1,11 @@
 from random import choice
 
-
 first = 'Мама мыла раму'
 second = 'Рамена мало было'
 print(list(map(lambda x, y: x == y, first, second)))
 
 
-def get_advanced_writer(file_name):
+def get_advanced_writer(file_name: str):
     def write_everything(*data_set):
         with open('file_name.txt', 'w', encoding='utf-8') as file:
             for i in data_set:
@@ -28,7 +27,8 @@ class MysticBall:
         return word_choice
 
 
-first_ball = MysticBall('Да', 'Нет', 'Наверное', 'Когда-нибудь', 'Этот мир абсолютно понятен')
+first_ball = MysticBall('Да', 'Нет', 'Наверное', 'Когда-нибудь', 'Этот мир абсолютно понятен', 'Хочу домой',
+                        "Памагити!!!")
 print(first_ball())
 print(first_ball())
 print(first_ball())
