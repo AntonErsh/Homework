@@ -1,13 +1,17 @@
 def is_prime(func):
     def wrapper(a, b, c):
         result1 = func(a, b, c)
+        flag = True
         for i in range(2, (result1 // 2) + 1):
-            if result1 % i == 0:
-                print('Составное')
+            if result1 == (1 or 2 or 3):
                 break
-            else:
-                print('Простое')
+            elif result1 % i == 0:
+                flag = False
                 break
+        if flag is False:
+            print('Составное')
+        else:
+            print("Простое")
         return result1
     return wrapper
 
@@ -18,5 +22,5 @@ def sum_three(a: int, b: int, c: int):
     return sum_abc
 
 
-result = sum_three(1, 5, 11)
+result = sum_three(3, 12, 52)
 print(result)
