@@ -25,7 +25,7 @@ class Cafe:
         self.tables = tables
         self.queue = Queue()
 
-    def guest_arrival(self, *guests: Guest):
+    def guest_arrival(self, *guests: list[Guest]):
         i = 0
         for guest in guests:
             if i < len(self.tables) and self.tables[i].guest is None:
@@ -39,24 +39,23 @@ class Cafe:
 
     def discuss_guests(self):
         i = 0
-        while not self.queue.empty() or self.tables[i].guest:
-            if self.tables[i].guest and not self.tables[i].guest.is_alive():
-                print(f'{self.tables[i].guest.name} покушал(а) и ушел(ушла).'
-                      f' \n Стол номер {self.tables[i].number} свободен ')
-                self.tables[i].guest = None
-            if not self.queue.empty() and self.tables[i].guest is None:
-                self.tables[i].guest = self.queue.get(timeout=1)
-                print(f'Гость {self.tables[i].guest.name} вышел из очереди'
-                      f' и сел за стол номер {self.tables[i].number} ')
-                self.tables[i].guest.start()
+        guest_at_table = self.tables[i].guest
+        number_of_table = self.tables[i].number
+        while not self.queue.empty() or guest_at_table:
+            if guest_at_table and not guest_at_table.is_alive():
+                print(f'{guest_at_table.name} покушал(а) и ушел(ушла).')
+                print(f'Стол номер {number_of_table} свободен ')
+                guest_at_table = None
+            if not self.queue.empty() and guest_at_table is None:
+                guest_at_table = self.queue.get(timeout=1)
+                print(f'Гость {guest_at_table.name} вышел из очереди и сел за стол номер {number_of_table} ')
+                guest_at_table.start()
             i += 1
             if i == len(self.tables):
                 i = 0
-            if self.tables[i].guest and self.queue.empty():
-                self.tables[i].guest.join()
 
 
-list_tables = [Table(number) for number in range(1, 6)]
+list_tables = [Table(number) for number in range(1, 3)]
 name_guests = ['Vasya', 'Petya', 'Masha', 'Misha', 'Ivan', 'Kaban', 'Rulon Oboev', 'Master']
 list_guests = [Guest(name) for name in name_guests]
 cafe = Cafe(*list_tables)
