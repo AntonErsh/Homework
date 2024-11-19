@@ -1,0 +1,26 @@
+2024-11-19 17:11:34,672 | INFO | "test_walk" выполнен успешно
+2024-11-19 17:11:34,673 | INFO | "test_run" выполнен успешно
+2024-11-19 17:11:34,692 | WARNING | Неверная скорость для Runner
+Traceback (most recent call last):
+  File "C:\Users\ЕПШ\Documents\GitHub\Homework\tests_12_4.py", line 64, in setUp
+    self.first = Runner('Вося', -10)
+                 ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ЕПШ\Documents\GitHub\Homework\tests_12_4.py", line 18, in __init__
+    raise ValueError(f'Скорость не может быть отрицательной, сейчас {speed}')
+ValueError: Скорость не может быть отрицательной, сейчас -10
+2024-11-19 17:11:34,701 | WARNING | Неверная скорость для Runner
+Traceback (most recent call last):
+  File "C:\Users\ЕПШ\Documents\GitHub\Homework\tests_12_4.py", line 64, in setUp
+    self.first = Runner('Вося', -10)
+                 ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ЕПШ\Documents\GitHub\Homework\tests_12_4.py", line 18, in __init__
+    raise ValueError(f'Скорость не может быть отрицательной, сейчас {speed}')
+ValueError: Скорость не может быть отрицательной, сейчас -10
+2024-11-19 17:11:34,770 | WARNING | Неверная скорость для Runner
+Traceback (most recent call last):
+  File "C:\Users\ЕПШ\Documents\GitHub\Homework\tests_12_4.py", line 64, in setUp
+    self.first = Runner('Вося', -10)
+                 ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ЕПШ\Documents\GitHub\Homework\tests_12_4.py", line 18, in __init__
+    raise ValueError(f'Скорость не может быть отрицательной, сейчас {speed}')
+ValueError: Скорость не может быть отрицательной, сейчас -10
