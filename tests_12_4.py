@@ -56,38 +56,36 @@ class Tournament:
 
 
 class RunnerTest(unittest.TestCase):
+
     if_frozen = False
 
     def setUp(self):
         try:
             self.first = Runner('Вося', -10)
-            self.second = Runner(False, 5)
-        except TypeError:
-            logging.warning("Неверный тип данных для объекта Runner", exc_info=True)
         except ValueError:
             logging.warning("Неверная скорость для Runner", exc_info=True)
+        except TypeError:
+            logging.warning("Неверный тип данных для объекта Runner", exc_info=True)
+        try:
+            self.second = Runner(False, 5)
+        except ValueError:
+            logging.warning("Неверная скорость для Runner", exc_info=True)
+        except TypeError:
+            logging.warning("Неверный тип данных для объекта Runner", exc_info=True)
 
-    try:
-        @unittest.skipIf(if_frozen is True, '')
-        def test_walk(self):
-            for _ in range(10):
-                self.first.walk()
-            self.assertEqual(self.first.distance, 100, 'Must be 50')
-
+    @unittest.skipIf(if_frozen is True, '')
+    def test_walk(self):
+        for _ in range(10):
+            self.first.walk()
+        self.assertEqual(self.first.distance, 100, 'Must be 50')
         logging.info('"test_walk" выполнен успешно')
-    except ValueError:
-        logging.warning("Неверная скорость для Runner", exc_info=True)
 
-    try:
-        @unittest.skipIf(if_frozen is True, '')
-        def test_run(self):
-            for _ in range(10):
-                self.second.run()
-            self.assertEqual(self.second.distance, 100, 'Must be 100')
-
+    @unittest.skipIf(if_frozen is True, '')
+    def test_run(self):
+        for _ in range(10):
+            self.second.run()
+        self.assertEqual(self.second.distance, 100, 'Must be 100')
         logging.info('"test_run" выполнен успешно')
-    except TypeError:
-        logging.warning("Неверный тип данных для объекта Runner", exc_info=True)
 
     @unittest.skipIf(if_frozen is True, '')
     def test_challenge(self):
@@ -97,7 +95,3 @@ class RunnerTest(unittest.TestCase):
             toni_walk.walk()
             lex_run.run()
         self.assertNotEqual(toni_walk.distance, lex_run.distance, "Must don't equal")
-
-# first = Runner('Вося', -10)
-# second = Runner(False, 5)
-# third = Runner('Арсен', 10)
