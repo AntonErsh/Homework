@@ -47,8 +47,8 @@ class Tournament:
 
 
 class TournamentTest(unittest.TestCase):
-
     if_frozen = True
+
     @classmethod
     def setUpClass(cls):
         cls.result_test_1 = {}
@@ -114,7 +114,6 @@ class TournamentTest(unittest.TestCase):
 
 
 class RunnerTest(unittest.TestCase):
-
     if_frozen = False
 
     @unittest.skipIf(if_frozen is True, '')
