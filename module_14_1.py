@@ -24,11 +24,22 @@ balance INTEGER NOT NULL
 # for i in range(1, 11, 3):
 #     cursor.execute(f'DELETE FROM Users WHERE username = ?', (f'User{i}', ))
 
-cursor.execute('SELECT username, email, age, balance FROM Users WHERE age != ?', (60, ))
-print_users = cursor.fetchall()
+# cursor.execute('SELECT username, email, age, balance FROM Users WHERE age != ?', (60, ))
+# print_users = cursor.fetchall()
 
-for i in print_users:
-    print(f'Имя: {i[0]} | Почта: {i[1]} | Возраст: {i[2]} | Баланс: {i[3]} ')
+# cursor.execute('DELETE FROM Users WHERE id = ?', (6, ))
+
+cursor.execute('SELECT COUNT (*) FROM Users')
+total = cursor.fetchone()[0]
+
+cursor.execute('SELECT SUM (balance) FROM Users')
+total_balance = cursor.fetchone()[0]
+
+cursor.execute('SELECT AVG (balance) FROM Users')
+avg_balance = cursor.fetchone()[0]
+avg_balance_or = total_balance // total
+print(avg_balance)
+print(avg_balance_or)
 
 connection.commit()
 connection.close()
