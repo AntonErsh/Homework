@@ -8,6 +8,8 @@ import asyncio
 from text import *
 from keyboards import *
 from config import *
+from admin import *
+from db import *
 
 
 logging.basicConfig(level=logging.INFO)

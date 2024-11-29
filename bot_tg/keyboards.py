@@ -25,3 +25,14 @@ buy_kb = InlineKeyboardMarkup(
         [InlineKeyboardButton(text='Назад', callback_data='back')]
     ]
 )
+
+admin_panel = InlineKeyboardMarkup(
+    inline_keyboard=[
+        [InlineKeyboardButton(text='Пользователи', callback_data='users')],
+        [InlineKeyboardButton(text='Статистика', callback_data='stat')],
+        [
+            InlineKeyboardButton(text='Заблокировать', callback_data='block'),
+            InlineKeyboardButton(text='Разблокировать', callback_data='unblock')
+        ]
+    ]
+)
